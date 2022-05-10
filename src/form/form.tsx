@@ -1,8 +1,10 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import "../form/style.css";
 
-const CustomForm = ({ onSubmit }: { onSubmit: () => void}) => {
+export interface ICustomForm {
+  onSubmit: () => void
+}
+
+const CustomForm = ({ onSubmit }: ICustomForm) => {
   const {
     register,
     formState: { errors },

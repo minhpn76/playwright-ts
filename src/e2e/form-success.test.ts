@@ -6,7 +6,7 @@ test('Unable to Submit Empty Form', async () => {
     headless: false
   });
   const context = await browser.newContext({
-    recordVideo: { dir: './src/e2e/video/' }
+    // recordVideo: { dir: './src/e2e/video/' }
   });
   const page = await context.newPage();
   await page.goto("http://localhost:3000/");

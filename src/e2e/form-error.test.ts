@@ -6,7 +6,7 @@ test('Unable to Submit Empty Form', async () => {
     headless: false,
   });
   const context = await browser.newContext({
-    recordVideo: { dir: './src/e2e/video/' }
+    // recordVideo: { dir: './src/e2e/video/' }
   });
   const page = await context.newPage();
   await page.goto("http://localhost:3000/");
@@ -23,7 +23,7 @@ test('Unable to Submit Empty Form', async () => {
   const errorMsg = await page.$eval("css=p", el => el.textContent);
 
   // verifying elements exist
-  expect(errorMsg).toEqual("Your name is required");
+  expect(errorMsg).toEqual("Your name modify is required");
 
   // screenshot of error
   await page.screenshot({

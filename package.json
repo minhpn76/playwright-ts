@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npx playwright test",
+    "test": "npx playwright test --config=playwright.config.ts",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

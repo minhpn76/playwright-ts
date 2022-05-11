@@ -2,7 +2,8 @@
  * @jest-environment jsdom
 */
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+
 import { mount, configure, shallow } from 'enzyme';
 
 configure({adapter: new Adapter()});
@@ -12,10 +13,10 @@ import CustomForm, { ICustomForm } from '../form'
 let wrapped: any
 
 const propsCustomForm: ICustomForm = {
-  onSubmit: () => {}
+  onSubmit: () => jest.fn()
 }
 beforeEach(() => {
-  wrapped = shallow(
+  wrapped = mount(
     <CustomForm {...propsCustomForm} />
   )
 })
@@ -24,26 +25,28 @@ beforeEach(() => {
 // 	wrapped.ummount()
 // })
 
-it('has a text area and a button', () => {
+it('has a input and a button', () => {
   expect(wrapped.find('input').length).toEqual(1)
   expect(wrapped.find('button').length).toEqual(1)
 })
 
-// describe('the text area', () => {
-//   beforeEach(() => {
-//     wrapped.find('textarea').simulate('change', {
-//       target: { value: 'new comment' }
-//     })
-//     wrapped.update()
-//   })
+describe('the input', () => {
+  beforeEach(() => {
+    wrapped.find('input').simulate('change', {
+      target: { value: 'edward.pn' }
+    })
+    wrapped.update()
+  })
+  
 
-//   it('has a text area that users can type in', () => {
-//     expect(wrapped.find('textarea').prop('value')).toEqual('new comment')
-//   })
+  it('has a text area that users can type in', () => {
+    // expect(wrapped.find('textarea').prop('value')).toEqual('new comment')
+  })
 
-//   it('when form is submiited, textarea gets emptied', () => {
-//     wrapped.find('form').simulate('submit')
-//     wrapped.update()
-//     expect(wrapped.find('textarea').prop('value')).toEqual('')
-//   })
-// })
+  // it('when form is submiited, textarea gets emptied', () => {
+  //   wrapped.find('form').simulate('submit')
+  //   wrapped.update()
+  //   expect(wrapped.find('textarea').prop('value')).toEqual('')
+  // })
+
+})

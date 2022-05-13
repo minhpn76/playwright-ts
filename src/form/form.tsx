@@ -15,7 +15,7 @@ const CustomForm = ({ onSubmit }: { onSubmit: () => void}) => {
           type="text"
           placeholder="Please enter your name"
           {...register("username", {
-            required: "Your name is required",
+            required: "Your name modify is required",
             minLength: {
               value: 4,
               message: "minimum length is 4 characters",
